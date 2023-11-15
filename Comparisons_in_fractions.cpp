@@ -13,10 +13,9 @@ public:
         denominator_ = denominator;
     }
 
-    double Abs() { return sqrt(numerator_ * numerator_ + denominator_ * denominator_); }
 
     bool operator== (Fraction right) {
-        return Abs() == right.Abs();
+        return (numerator_ == right.numerator_ && denominator_ == right.denominator_);
     }
 
     bool operator!= (Fraction right) {
@@ -24,7 +23,7 @@ public:
     }
 
     bool operator< (Fraction right) {
-        return Abs() < right.Abs();;
+        return (static_cast<double>(numerator_) / static_cast<double>(denominator_) < static_cast<double>(right.numerator_) / static_cast<double>(right.denominator_));
     }
 
     bool operator> (Fraction right) {
