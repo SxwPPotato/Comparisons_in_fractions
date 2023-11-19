@@ -12,10 +12,12 @@ public:
         numerator_ = numerator;
         denominator_ = denominator;
     }
-
+    double frac (double num, double denom) {
+        return num / denom;
+    }
 
     bool operator== (Fraction right) {
-        return (static_cast<double>(numerator_) / static_cast<double>(denominator_) == static_cast<double>(right.numerator_) / static_cast<double>(right.denominator_));
+        return frac(numerator_, denominator_) == frac(right.numerator_, right.denominator_);
     }
 
     bool operator!= (Fraction right) {
@@ -23,7 +25,7 @@ public:
     }
 
     bool operator< (Fraction right) {
-        return (static_cast<double>(numerator_) / static_cast<double>(denominator_) < static_cast<double>(right.numerator_) / static_cast<double>(right.denominator_));
+        return frac(numerator_, denominator_) < frac(right.numerator_, right.denominator_);
     }
 
     bool operator> (Fraction right) {
@@ -42,7 +44,7 @@ int main()
 {
     setlocale(LC_ALL, "russian");
     Fraction f1(4, 3);
-    Fraction f2(8, 6);
+    Fraction f2(6, 11);
 
     std::cout << "f1" << ((f1 == f2) ? " == " : " not == ") << "f2" << '\n';
     std::cout << "f1" << ((f1 != f2) ? " != " : " not != ") << "f2" << '\n';
